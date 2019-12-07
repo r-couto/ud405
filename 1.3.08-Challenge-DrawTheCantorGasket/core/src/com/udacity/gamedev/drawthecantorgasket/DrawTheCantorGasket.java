@@ -63,25 +63,25 @@ public class DrawTheCantorGasket extends ApplicationAdapter {
             return;
         }
 
-        float novoTamanho = size / 3f;
-        float novoTamanho2 = novoTamanho * 2f;
+        float newSize = size / 3f;
+        float newSize2 = newSize * 2f;
 
         // TODO: Draw a black square in the middle square
-        shapeRenderer.rect(x + novoTamanho, y + novoTamanho, novoTamanho, novoTamanho);
+        shapeRenderer.rect(x + newSize, y + newSize, newSize, newSize);
 
         recursions--;
 
         // TODO: Call punchCantorGasket on all 8 other squares
-        punchCantorGasket(x, y, novoTamanho, recursions); //0,0
-        punchCantorGasket(x, y + novoTamanho, novoTamanho, recursions); //0,1
-        punchCantorGasket(x, y + novoTamanho2, novoTamanho, recursions); //0,2
+        punchCantorGasket(x, y, newSize, recursions); //0,0
+        punchCantorGasket(x, y + newSize, newSize, recursions); //0,1
+        punchCantorGasket(x, y + newSize2, newSize, recursions); //0,2
 
-        punchCantorGasket(x + novoTamanho, y, novoTamanho, recursions); //1,0
-        punchCantorGasket(x + novoTamanho, y + novoTamanho2, novoTamanho, recursions); //1,2
+        punchCantorGasket(x + newSize, y, newSize, recursions); //1,0
+        punchCantorGasket(x + newSize, y + newSize2, newSize, recursions); //1,2
 
-        punchCantorGasket(x + novoTamanho2, y, novoTamanho, recursions); // 2,0
-        punchCantorGasket(x + novoTamanho2, y + novoTamanho, novoTamanho, recursions); // 2,1
-        punchCantorGasket(x + novoTamanho2, y + novoTamanho2, novoTamanho, recursions); // 2,2
+        punchCantorGasket(x + newSize2, y, newSize, recursions); // 2,0
+        punchCantorGasket(x + newSize2, y + newSize, newSize, recursions); // 2,1
+        punchCantorGasket(x + newSize2, y + newSize2, newSize, recursions); // 2,2
     }
 
     private Rectangle findLargestSquare(){
