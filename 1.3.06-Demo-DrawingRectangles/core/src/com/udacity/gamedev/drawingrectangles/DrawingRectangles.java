@@ -49,7 +49,6 @@ public class DrawingRectangles extends ApplicationAdapter {
         // As I'm sure you're used to by now, we always have to clear the screen first
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         // Rectangles can be drawn with either ShapeType.Filled or ShapeType.Line
         shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.WHITE);
@@ -58,8 +57,8 @@ public class DrawingRectangles extends ApplicationAdapter {
         shapeRenderer.rect(10, 10, 90, 90);
 
         // We can do even more interesting things with colors, like specifying a color for each corner!
-        shapeRenderer.rect(110, 10, 90, 90, Color.BLUE, Color.BLACK, Color.GREEN, Color.MAGENTA);
-        shapeRenderer.rect(10, 110, 90, 90, Color.RED, Color.RED, Color.BLACK, Color.BLACK);
+        shapeRenderer.rect(110, 10, 90, 90, Color.CYAN, Color.BLUE, Color.CYAN, Color.BLUE);
+        shapeRenderer.rect(10, 110, 90, 90, Color.RED, Color.BLACK, Color.BLACK, Color.RED);
 
         // What happens when we draw two filled in shapes where they overlap?
         shapeRenderer.rect(210, 10, 90, 90, Color.RED, Color.RED, Color.RED, Color.RED);

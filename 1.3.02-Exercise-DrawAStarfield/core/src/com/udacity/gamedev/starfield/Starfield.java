@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
+import java.util.Random;
+
 /**
  * TODO: Start here!
  *
@@ -40,18 +42,31 @@ public class Starfield extends ApplicationAdapter {
     @Override
     public void create() {
         // TODO: Initialize a shapeRenderer
+        shapeRenderer = new ShapeRenderer();
 
         // TODO: Call initStars
-
+        initStars(STAR_DENSITY);
     }
 
     public void initStars(float density) {
         // TODO: Figure out how many stars to draw. You'll need the screen dimensions, which you can get using Gdx.graphics.getWidth() and Gdx.graphics.getHeight().
+        int screenWidth = Gdx.graphics.getWidth();
+        int screenHeight = Gdx.graphics.getHeight();
+
+        int totalStars = (int) (screenWidth * screenHeight * density);
 
         // TODO: Create a new array of Vector2's to hold the star positions
+        stars = new Array<Vector2>(totalStars);
+
+        Random random = new Random();
 
         // TODO: Use java.util.Random to fill the array of star positions
-
+        for (int i = 0; i < totalStars; i++) {
+            int x = random.nextInt(screenWidth);
+            int y = random.nextInt(screenHeight);
+            Vector2 v = new Vector2(x,y);
+            stars.add(v);
+        }
     }
 
     @Override
@@ -63,20 +78,26 @@ public class Starfield extends ApplicationAdapter {
     @Override
     public void render() {
         // TODO: Make the night sky black
-        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // TODO: Begin a shapeRenderer batch using ShapeType.Point
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Point);
 
         // TODO: Loop through the star positions and use shapeRenderer to draw points
+        for (Vector2 v : stars) {
+            shapeRenderer.point(v.x, v.y, 0);
+        }
 
         // TODO: End the shapeRenderer batch
+        shapeRenderer.end();
 
     }
 
     @Override
     public void dispose() {
         // TODO: Dispose of our ShapeRenderer
+        shapeRenderer.dispose();
 
         super.dispose();
     }
